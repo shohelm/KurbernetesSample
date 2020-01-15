@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mysamplewebapi 
 spec:
-  replicas: 2  
+  replicas: 2  #use for scaling the pod
   selector:
     matchLabels:
       app: mysamplewebapi

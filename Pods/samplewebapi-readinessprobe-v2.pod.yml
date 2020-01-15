@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysamplewebapi
+  labels:
+    app: samplewebapi
+    rel: stable
+spec:
+  containers:
+  - name: mysamplewebapi
+    image: samplewebapi:latest
+    imagePullPolicy: IfNotPresent
+    livenessProbe:  #define liveness probe
+      httpGet:
+        path: /WeatherForecast #check /index.html on port 80
+        port: 80
+      initialDelaySeconds: 15 # Wait 15 seconds
+      timeoutSeconds: 2 #timeout after 2 seconds
+      periodSeconds: 5  #Check every 5 seconds
+      failureThreshold: 1  #Allow 1 failure before failing Pod
+    readinessProbe:  #define liveness probe
+      httpGet:
+        path: /WeatherForecast #check /index.html on port 80
+        port: 80
+      initialDelaySeconds: 15 # Wait 15 seconds 
+      periodSeconds: 5  #Check every 5 seconds Default is 10
+      failureThreshold: 1  #Allow 1 failure before failing Pod Default is 3  
+    ports:
+    - containerPort: 80
+  

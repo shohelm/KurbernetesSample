@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysamplewebapi-nodeport
+spec:
+  type: NodePort    #use for loadbalancing
+  selector:
+      app: mysamplewebapi
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 31000
