@@ -25,11 +25,9 @@ stages:
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: |
-          $(tag)
-          
+        tags: |$(tag)
     - task: PublishBuildArtifacts@1
       displayName: Build Latest image
-      inputs:
-        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
         artifactName: drop
