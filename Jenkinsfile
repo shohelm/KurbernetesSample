@@ -9,7 +9,7 @@ node {
 
     stage('Build image') {
         /* This builds the actual image in the local docker host and use the variable for further stage*/
-        app = docker.build("samplewebapi", ". -f SampleWebApi/Dockerfile")
+        app = docker.build("samplewebapi", ". -f /Dockerfile")
     }
 
     stage('Test image') {
@@ -33,6 +33,6 @@ node {
     stage('Deploy in kubernetes')
     {
     	/*kubectl apply -f SampleWebApi/samplewebapi-deployment.yml */
-	 kubernetesDeploy(configs: "SampleWebApi/samplewebapi-deployment.yml", kubeconfigId: "mykubeconfig")    
+	 kubernetesDeploy(configs: "Deployments/samplewebapi-v2.deployment.yml", kubeconfigId: "mykubeconfig")    
     }
 }
