@@ -14,13 +14,13 @@ node {
 	  echo "Build the Repository to our Workspace"
     }
 
-    stage('Test image') {
+    /*stage('Test image') {
         
         app.inside {
             echo "Tests passed"
 	    echo "The build number is ${env.BUILD_NUMBER}"
         }
-    }
+    }*/
 
     stage('Push image') {
          
