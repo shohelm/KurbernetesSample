@@ -9,7 +9,7 @@ node {
 
     stage('Build image') {
         /* This builds the actual image in the local docker host and use the variable for further stage*/
-        app = docker.build("samplewebapi", ". -f /Dockerfile")
+        app = docker.build("samplewebapi", ". -f Dockerfile")
     }
 
     stage('Test image') {
