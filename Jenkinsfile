@@ -5,19 +5,21 @@ node {
         /* Cloning the Repository to our Workspace 
 
         checkout scm*/
+	    echo "Cloning the Repository to our Workspace"
     }
 
     stage('Build image') {
         /* This builds the actual image in the local docker host and use the variable for further stage
         app = docker.build("samplewebapi", ". -f Dockerfile")*/
+	  echo "Build the Repository to our Workspace"
     }
 
     stage('Test image') {
         
         /* app.inside {
             echo "Tests passed"
-	    echo "The build number is ${env.BUILD_NUMBER}"*/
-        }
+	    echo "The build number is ${env.BUILD_NUMBER}"
+        }*/
     }
 
     stage('Push image') {
