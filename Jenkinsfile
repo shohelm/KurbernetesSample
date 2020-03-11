@@ -2,14 +2,14 @@ node {
     def app
     
     stage('Clone repository') {
-        /* Cloning the Repository to our Workspace */
+        /* Cloning the Repository to our Workspace 
 
-        checkout scm
+        checkout scm*/
     }
 
     stage('Build image') {
-        /* This builds the actual image in the local docker host and use the variable for further stage*/
-        app = docker.build("samplewebapi", ". -f Dockerfile")
+        /* This builds the actual image in the local docker host and use the variable for further stage
+        app = docker.build("samplewebapi", ". -f Dockerfile")*/
     }
 
     stage('Test image') {
@@ -25,8 +25,8 @@ node {
 	/*You would need to first register with DockerHub before you can push images to your account*/
 		
         docker.withRegistry('http://10.16.131.56:5000/samplewebapi') {
-            /*app.push("${env.BUILD_NUMBER}")*/ 
-            app.push("latest")
+            /*app.push("${env.BUILD_NUMBER}")
+            app.push("latest")*/ 
             } 
                 echo "Trying to Push Docker Build to DockerHub"
     }
