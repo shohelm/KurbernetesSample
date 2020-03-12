@@ -16,10 +16,11 @@ node {
 
     stage('Test image') {
         
-        app.inside {
+       /* app.inside {
             echo "Tests passed"
 	    echo "The build number is ${env.BUILD_NUMBER}"
-        }
+        }*/
+	     echo "The build number is ${env.BUILD_NUMBER}"
     }
 
     stage('Push image') {
