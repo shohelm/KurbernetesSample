@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysamplewebapi
+  labels:
+    app: mysamplewebapi 
+spec:
+  replicas: 5  #use for scaling the pod
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: mysamplewebapi
+  template:
+    metadata:
+        labels:
+          app: mysamplewebapi 
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: mysamplewebapi
+        image: localhost:5000/samplewebapi:${env.BUILD_NUMBER}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /healthz
+            port: 80
+            scheme: HTTP
+          periodSeconds: 5
+          initialDelaySeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 30
+        resources:
+          #limits:
+            #memory: "128Mi" #"128Mi"
+            #cpu: "200m" #200 millicpu (.2 cpu or 20% of the cpu)  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysamplewebapi-loadbalancer
+spec:
+  type: LoadBalancer    #use for loadbalancing
+  selector:
+      app: mysamplewebapi
+  ports:
+    - name: "80"
+      port: 80
+      targetPort: 80            
