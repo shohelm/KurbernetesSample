@@ -1,1 +1,40 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysamplewebapi
+  labels:
+    app: mysamplewebapi 
+spec:
+  replicas: 1  #use for scaling the pod
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: mysamplewebapi
+  template:
+    metadata:
+        labels:
+          app: mysamplewebapi 
+    spec:
+      containers:
+      - name: mysamplewebapi
+        image: localhost:5000/samplewebapi:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        resources:
+          #limits:
+            #memory: "128Mi" #"128Mi"
+            #cpu: "200m" #200 millicpu (.2 cpu or 20% of the cpu)  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysamplewebapi-loadbalancer
+spec:
+  type: LoadBalancer    #use for loadbalancing
+  selector:
+      app: mysamplewebapi
+  ports:
+    - name: "80"
+      port: 80
+      targetPort: 80            
