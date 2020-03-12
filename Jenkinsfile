@@ -36,6 +36,6 @@ node {
     stage('Deploy in kubernetes')
     {
     	/*kubectl apply -f SampleWebApi/samplewebapi-deployment.yml */
-	 kubernetesDeploy(configs: "Deployments/samplewebapi-v3.deployment.yml", kubeconfigId: "mykubeconfig")    
+	 kubernetesDeploy(configs: "Deployments/samplewebapi-v4.deployment.yml", kubeconfigId: "mykubeconfig")    
     }
 }
