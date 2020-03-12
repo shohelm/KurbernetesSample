@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: mysamplewebapi
-        image: localhost:5000/samplewebapi:latest
+        image: localhost:5000/samplewebapi:${env.BUILD_NUMBER}
         imagePullPolicy: Always
         ports:
         - containerPort: 80
