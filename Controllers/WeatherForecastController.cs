@@ -24,10 +24,10 @@ namespace SampleWebApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public string Get()
         {
        
-        return  System.DateTime.Now;
+        return  System.DateTime.Now.toString();
         }
     }
 }
