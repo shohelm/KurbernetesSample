@@ -27,7 +27,7 @@ namespace SampleWebApi.Controllers
         public string Get()
         {
        
-        return  "Shohel Al Mahmud Elabs AG v1";
+        return  "Shohel Al Mahmud Elabs AG Kube";
         }
     }
 }
