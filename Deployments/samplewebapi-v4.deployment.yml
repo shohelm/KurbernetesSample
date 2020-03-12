@@ -27,12 +27,6 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
-        readinessProbe:
-          httpGet:
-            path: /readiness
-            port: 80
-          initialDelaySeconds: 300
-          periodSeconds: 30
         resources:
           #limits:
             #memory: "128Mi" #"128Mi"
