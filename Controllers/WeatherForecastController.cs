@@ -26,8 +26,8 @@ namespace SampleWebApi.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-        var now = new Date();
-        return now.format("dd/M/yy h:mm tt");
+       
+        return  System.DateTime.Now;
         }
     }
 }
