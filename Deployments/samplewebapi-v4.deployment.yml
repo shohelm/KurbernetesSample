@@ -28,15 +28,11 @@ spec:
         ports:
         - containerPort: 80
         readinessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /healthz
-            port: 80
-            scheme: HTTP
-          periodSeconds: 5
-          initialDelaySeconds: 5
-          successThreshold: 1
-          timeoutSeconds: 30
+        httpGet:
+          path: /readiness
+          port: 80
+        initialDelaySeconds: 300
+        periodSeconds: 30
         resources:
           #limits:
             #memory: "128Mi" #"128Mi"
