@@ -14,21 +14,21 @@ node {
 	  echo "Build the Repository to our Workspace"
     }
 
-    /*stage('Test image') {
+    stage('Test image') {
         
         app.inside {
             echo "Tests passed"
 	    echo "The build number is ${env.BUILD_NUMBER}"
         }
-    }*/
+    }
 
     stage('Push image') {
          
 	/*You would need to first register with DockerHub before you can push images to your account*/
 		
         docker.withRegistry('http://localhost:5000/samplewebapi') {
-            /*app.push("${env.BUILD_NUMBER}")*/
-            app.push("latest") 
+            app.push("${env.BUILD_NUMBER}")
+            /*app.push("latest")*/ 
             } 
                 echo "Trying to Push Docker Build to DockerHub"
     }
