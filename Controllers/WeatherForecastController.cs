@@ -27,7 +27,7 @@ namespace SampleWebApi.Controllers
         public string Get()
         {
        
-        return  System.DateTime.Now.toString();
+        return  "Shohel";
         }
     }
 }
